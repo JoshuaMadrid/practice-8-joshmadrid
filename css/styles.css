@@ -138,3 +138,107 @@ h3 {
   padding: 28px;
   background: #E6E0D4;
 }
+
+/* ============================================
+   PRACTICE EIGHT · make it responsive
+   ============================================ */
+
+/* 1 · Liquid: rules, not fixed sizes */
+
+.hero h1 {
+  font-size: clamp(48px, 9vw, 96px);
+}
+
+.hero p,
+.studio p,
+.person p {
+  max-width: 60ch;
+}
+
+.records, .studio, .people {
+  padding: clamp(32px, 6vw, 64px) clamp(16px, 4vw, 32px);
+}
+
+.hero {
+  min-height: clamp(360px, 60vh, 520px);
+}
+
+/* 2 · Responsive: one column first */
+
+body {
+  grid-template-columns: 1fr;
+}
+
+.site-header, .hero, .people, .site-footer {
+  grid-column: 1 / -1;    /* span 2 would make a second column */
+}
+
+.info {
+  flex: 1 1 160px;
+}
+
+.cards {
+  flex-wrap: wrap;
+}
+
+.person {
+  flex: 1 1 260px;
+}
+
+.album {
+  flex-wrap: wrap;
+}
+
+@media (min-width: 900px) {
+  body {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* 3 · Optimized: a different nav and a tighter crop on a phone */
+
+.nav-links {
+  display: none;
+}
+
+.menu summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 16px;
+  border: 2px solid #F4F1EA;
+  font-weight: 600;
+}
+
+.menu ul {
+  position: absolute;
+  right: 16px;
+  margin-top: 8px;
+  padding: 16px 24px;
+  background: #111111;
+  list-style: none;
+}
+
+.menu li a {
+  display: block;
+  padding: 12px 0;
+}
+
+.studio img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 55% 70%;
+}
+
+@media (min-width: 900px) {
+  .nav-links {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .studio img {
+    aspect-ratio: auto;
+  }
+}
